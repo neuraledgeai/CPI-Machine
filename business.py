@@ -122,7 +122,7 @@ class Model:
         df,
         x=df.index,
         y="CPI_PC",
-        title="CPI: % Change YoY (1961 - 2033)",
+        title="Inflation % Change (1961 - 2033)",
         labels={"CPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
@@ -132,7 +132,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI_PC",
-        title="CPI Core: % Change YoY: (1961 - 2033)",
+        title="Core Inflation % Change (1961 - 2033)",
         labels={"CCPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
