@@ -96,10 +96,7 @@ class Model:
         df,
         x=df.index,
         y="CPI",
-        title=(
-            "Consumer Price Index for All Urban Consumers: "
-            "All Items in U.S. City Average (1961 - 2033)"
-        ),
+        title=("CPI: All Items, U.S. City Average (1961 - 2033)"),
         labels={
             "CPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
@@ -112,10 +109,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI",
-        title=(
-            "Consumer Price Index for All Urban Consumers: "
-            "All Items Less Food and Energy in U.S. City Average (1961 - 2033)"
-        ),
+        title=("CPI: All Items Less Food & Energy, U.S. City Average (1961 - 2033)"),
         labels={
             "CCPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
@@ -128,7 +122,7 @@ class Model:
         df,
         x=df.index,
         y="CPI_PC",
-        title="Percentage Change a Year Ago in CPI: All Items in U.S. City Average (1961 - 2033)",
+        title="CPI % Change YoY: All Items, U.S. City Average (1961 - 2033)",
         labels={"CPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
@@ -138,7 +132,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI_PC",
-        title="Percentage Change a Year Ago in CPI: All Items Less Food and Energy in U.S. City Average (1961 - 2033)",
+        title="CPI % Change YoY: All Items Less Food & Energy, U.S. City Average (1961 - 2033)",
         labels={"CCPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
