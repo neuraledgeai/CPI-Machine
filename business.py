@@ -96,7 +96,7 @@ class Model:
         df,
         x=df.index,
         y="CPI",
-        title=("CPI: All Items, U.S. City Average (1961 - 2033)"),
+        title=("CPI: (1961 - 2033)"),
         labels={
             "CPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
@@ -109,7 +109,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI",
-        title=("CPI: All Items Less Food & Energy, U.S. City Average (1961 - 2033)"),
+        title=("CPI: Core (1961 - 2033)"),
         labels={
             "CCPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
@@ -122,7 +122,7 @@ class Model:
         df,
         x=df.index,
         y="CPI_PC",
-        title="CPI % Change YoY: All Items, U.S. City Average (1961 - 2033)",
+        title="CPI: % Change YoY (1961 - 2033)",
         labels={"CPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
@@ -132,7 +132,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI_PC",
-        title="CPI % Change YoY: All Items Less Food & Energy, U.S. City Average (1961 - 2033)",
+        title="CPI Core: % Change YoY: (1961 - 2033)",
         labels={"CCPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
