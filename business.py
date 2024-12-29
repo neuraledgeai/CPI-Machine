@@ -96,7 +96,7 @@ class Model:
         df,
         x=df.index,
         y="CPI",
-        title=("CPI: (1961 - 2033)"),
+        title=("Inflation: (1961 - 2033)"),
         labels={
             "CPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
@@ -109,7 +109,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI",
-        title=("CPI: Core (1961 - 2033)"),
+        title=("Core Inflation (1961 - 2033)"),
         labels={
             "CCPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
