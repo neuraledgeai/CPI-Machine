@@ -1,19 +1,7 @@
-# 🎈 Blank app template
+# CPI Machine
 
-A simple Streamlit app template for you to modify!
+Welcome to the CPI Machine repository!
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+CPI Machine is a forecasting tool designed to predict the Consumer Price Index (CPI) in the USA. 
 
-### How to run it on your own machine
-
-1. Install the requirements
-
-   ```
-   $ pip install -r requirements.txt
-   ```
-
-2. Run the app
-
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+Feel free to explore the repository, contribute to the project, and use the tool for your forecasting needs. Your contributions and feedback are highly appreciated!
