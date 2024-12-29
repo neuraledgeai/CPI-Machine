@@ -1,6 +1,14 @@
 import streamlit as st
+from display import Presentation
 
-st.title("🎈 My new app")
-st.write(
-    "Let's start building! For help and inspiration, head over to [docs.streamlit.io](https://docs.streamlit.io/)."
+# Set page title and layout
+st.set_page_config(
+    page_title="CPI Machine",
+    layout="wide",
 )
+
+present = Presentation()
+
+st.title("Consumer Price Index in the USA")
+present.cpi()
+present.notes()
