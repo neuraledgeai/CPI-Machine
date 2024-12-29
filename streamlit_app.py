@@ -3,7 +3,7 @@ from display import Presentation
 
 # Set page title and layout
 st.set_page_config(
-    page_title="CPI Machine",
+    page_title="CPI Machines",
     layout="wide",
 )
 
