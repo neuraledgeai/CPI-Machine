@@ -96,7 +96,7 @@ class Model:
         df,
         x=df.index,
         y="CPI",
-        title=("Inflation (1961 - 2033)"),
+        title=(""),
         labels={
             "CPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
@@ -109,7 +109,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI",
-        title=("Core Inflation (1961 - 2033)"),
+        title=(""),
         labels={
             "CCPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
@@ -122,7 +122,7 @@ class Model:
         df,
         x=df.index,
         y="CPI_PC",
-        title="Inflation % Change (1961 - 2033)",
+        title="",
         labels={"CPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
@@ -132,7 +132,7 @@ class Model:
         df,
         x=df.index,
         y="CCPI_PC",
-        title="Core Inflation % Change (1961 - 2033)",
+        title="",
         labels={"CCPI_PC": "CPI % Change a Year Ago", "index": "Year"},
         template="plotly_white"
     )
