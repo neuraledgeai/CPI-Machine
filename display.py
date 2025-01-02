@@ -69,7 +69,13 @@ class Presentation:
       cpi_percent_change = percent_change_ccpi.round(3)
       purchasing_power = pp_ccpi_2033.round(3)
       purchasing_power_percent_change = pp_ccpi_change.round(3)
-      
+  
+    heading = """
+    <div style="text-align: center; font-size: 12px;">
+        The Consumer Price Index for All Urban Consumers: All Items
+    </div>
+    """  
+    
     fig = self.model.predict(result = result)
     
     # Improve the layout and design
@@ -83,7 +89,7 @@ class Presentation:
         ),
         yaxis=dict(showgrid=True, gridcolor="lightgrey"),
     )
-    
+    st.markdown(heading, unsafe_allow_html=True)
     st.plotly_chart(fig)
     
     col1, col2 = st.columns(2)
