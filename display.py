@@ -51,6 +51,7 @@ class Presentation:
       cpi_percent_change = percent_change_cpi.round(3)
       purchasing_power = pp_cpi_2033.round(3)
       purchasing_power_percent_change = pp_cpi_change.round(3)
+      heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (1961-2033)"
     elif option == "Inflation (percent change)":
       result = "fig_cpi_pct_chg"
       cpi = mean_cpi.round(3)
@@ -72,7 +73,7 @@ class Presentation:
   
     heading = """
     <div style="text-align: justify; font-size: 17px;">
-        <strong>Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (1961-2033)</strong>
+        <strong>{heading_text}</strong>
     </div>
     """  
     
