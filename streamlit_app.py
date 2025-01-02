@@ -9,6 +9,6 @@ st.set_page_config(
 
 present = Presentation()
 
-st.title("Consumer Price Index in the USA")
+st.title("Inflation Expectations as Measured by the Consumer Price Index (CPI) in the USA")
 present.cpi()
 present.notes()
