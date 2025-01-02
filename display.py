@@ -75,7 +75,7 @@ class Presentation:
       heading_text = "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average, Percent Change From Year Ago (1961-2033)"
   
     heading = f"""
-    <div style="text-align: justify; font-size: 17px;">
+    <div style="text-align: justify; font-size: 20px;">
         <strong>{heading_text}</strong>
     </div>
     """  
