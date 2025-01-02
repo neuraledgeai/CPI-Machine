@@ -71,8 +71,8 @@ class Presentation:
       purchasing_power_percent_change = pp_ccpi_change.round(3)
   
     heading = """
-    <div style="text-align: center; font-size: 17px;">
-        <strong>The Consumer Price Index for All Urban Consumers: All Items</strong>
+    <div style="text-align: justify; font-size: 17px;">
+        <strong>Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (1961-2033)</strong>
     </div>
     """  
     
