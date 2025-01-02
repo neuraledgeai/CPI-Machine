@@ -57,6 +57,7 @@ class Presentation:
       cpi = mean_cpi.round(3)
       cpi_percent_change = percent_change_cpi.round(3)
       purchasing_power = pp_cpi_2033.round(3)
+      heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Percent Change From Year Ago (1961-2033)"
       purchasing_power_percent_change = pp_cpi_change.round(3)
     elif option == "Core Inflation":
       result = "fig_ccpi"
@@ -64,12 +65,14 @@ class Presentation:
       cpi_percent_change = percent_change_ccpi.round(3)
       purchasing_power = pp_ccpi_2033.round(3)
       purchasing_power_percent_change = pp_ccpi_change.round(3)
+      heading_text = "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average (1961-2033)"
     elif option == "Core Inflation (percent change)":
       result = "fig_ccpi_pct_chg"
       cpi = mean_ccpi.round(3)
       cpi_percent_change = percent_change_ccpi.round(3)
       purchasing_power = pp_ccpi_2033.round(3)
       purchasing_power_percent_change = pp_ccpi_change.round(3)
+      heading_text = "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average, Percent Change From Year Ago (1961-2033)"
   
     heading = f"""
     <div style="text-align: justify; font-size: 17px;">
@@ -82,7 +85,6 @@ class Presentation:
     # Improve the layout and design
     fig.update_layout(
         dragmode=False,
-        title_font=dict(size=17, family="Arial"),
         xaxis=dict(
             showgrid=True, 
             gridcolor="lightgrey",
