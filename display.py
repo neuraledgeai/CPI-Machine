@@ -91,7 +91,7 @@ class Presentation:
             rangeslider=dict(visible=True, bgcolor="#636EFA", thickness=0.05),  
         ),
         yaxis=dict(showgrid=True, gridcolor="lightgrey"),
-        margin=dict(l=0, r=0, t=8, b=0)
+        margin=dict(l=0, r=0, t=7, b=0)
     )
     st.markdown(heading, unsafe_allow_html=True)
     config = {
