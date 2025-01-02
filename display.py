@@ -93,7 +93,13 @@ class Presentation:
         yaxis=dict(showgrid=True, gridcolor="lightgrey"),
     )
     st.markdown(heading, unsafe_allow_html=True)
-    st.plotly_chart(fig)
+    config = {
+        'displayModeBar': False,  # Hide the mode bar
+        'displaylogo': False,     # Hide the Plotly logo
+        'modeBarButtonsToRemove': ['zoom2d', 'pan2d', 'select2d', 'lasso2d', 
+                                   'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
+    }
+    st.plotly_chart(fig, config=config)
     
     col1, col2 = st.columns(2)
     col1.metric(
