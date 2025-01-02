@@ -96,7 +96,7 @@ class Model:
         df,
         x=df.index,
         y="CPI",
-        title=(""),
+        title=(" "),
         labels={
             "CPI": "CPI (Index 1982-1984=100)",
             "index": "Year"
