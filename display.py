@@ -71,7 +71,7 @@ class Presentation:
       purchasing_power = pp_ccpi_2033.round(3)
       purchasing_power_percent_change = pp_ccpi_change.round(3)
   
-    heading = """
+    heading = f"""
     <div style="text-align: justify; font-size: 17px;">
         <strong>{heading_text}</strong>
     </div>
