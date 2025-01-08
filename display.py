@@ -7,21 +7,96 @@ class Presentation:
   def __init__(self):
     self.model = Model()
 
-  def cpi(self):
-    
+  def inflation(self):
     option = st.selectbox(
       "Units/Index:",
       (
         "Inflation",
-        "Core Inflation",
-        "Inflation (percent change)",
-        "Core Inflation (percent change)"
+        "Percent Change",
       ),
     )
+    
     df = self.model.predict(result="dataframe")
     # Filter for predicted values (2024–2033)
     df_predicted = df[df["Label"] == "Predicted"]
+
+    # Calculate the mean CPI
+    mean_cpi = df_predicted["CPI"].mean()
     
+    # Get the actual CPI
+    actual_cpi_2023 = df.loc["2023-01-01", "CPI"]
+
+    # Calculate percent change from 2023 actual to predicted mean
+    percent_change_cpi = ((mean_cpi - actual_cpi_2023) / actual_cpi_2023) * 100
+
+    # Calculate Purchasing Power for 2023 and 2033
+    pp_cpi_2023 = 100 / df.loc["2023-01-01", "CPI"]
+    pp_cpi_2033 = 100 / df.loc["2033-01-01", "CPI"]
+    
+
+    # Calculate Percent Change in Purchasing Power
+    pp_cpi_change = ((pp_cpi_2033 - pp_cpi_2023) / pp_cpi_2023) * 100
+
+    if option == "Inflation":
+      result = "fig_cpi"
+      cpi = mean_cpi.round(3)
+      cpi_percent_change = percent_change_cpi.round(3)
+      purchasing_power = pp_cpi_2033.round(3)
+      purchasing_power_percent_change = pp_cpi_change.round(3)
+      heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (1961-2033)"
+    elif option == "Percent Change":
+      result = "fig_cpi_pct_chg"
+      cpi = mean_cpi.round(3)
+      cpi_percent_change = percent_change_cpi.round(3)
+      purchasing_power = pp_cpi_2033.round(3)
+      heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Percent Change From Year Ago (1961-2033)"
+      purchasing_power_percent_change = pp_cpi_change.round(3)
+      
+    heading = f"""
+    <div style="text-align: center; font-size: 18px;">
+        <strong>{heading_text}</strong>
+    </div>
+    """  
+    
+    fig = self.model.predict(result = result)
+    
+    # Improve the layout and design
+    fig.update_layout(
+        dragmode=False,
+        xaxis=dict(
+            showgrid=True, 
+            gridcolor="lightgrey",
+            rangeslider=dict(visible=True, bgcolor="#636EFA", thickness=0.05),  
+        ),
+        yaxis=dict(showgrid=True, gridcolor="lightgrey"),
+        margin=dict(l=0, r=0, t=0, b=0)
+    )
+    st.markdown(heading, unsafe_allow_html=True)
+    config = {
+        'displayModeBar': False,  # Hide the mode bar
+        'displaylogo': False,     # Hide the Plotly logo
+        'modeBarButtonsToRemove': ['zoom2d', 'pan2d', 'select2d', 'lasso2d', 
+                                   'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
+    }
+    st.plotly_chart(fig, config=config)
+    
+    col1, col2 = st.columns(2)
+    col1.metric(
+      "10 Year Avg. CPI (2023-33)",
+      cpi,
+      f"{cpi_percent_change}%",
+      help =f"The average Consumer Price Index (CPI) over the 10 years from 2024 to 2033 is expected to represent a {cpi_percent_change}% increase compared to the CPI value in 2023.",
+      border=True
+    )
+    col2.metric(
+      "Purchasing Power (2033)",
+      f"{purchasing_power * 100}%",
+      f"{purchasing_power_percent_change}%",
+      border=True,
+      help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only {purchasing_power * 100}% of its value during the base period (1982-1984). It is expected to represent a {purchasing_power_percent_change}% decrease compared to 2023."
+    )
+
+  def coreInflation(self):
     # Calculate the mean CPI and CCPI for the predicted values
     mean_cpi = df_predicted["CPI"].mean()
     mean_ccpi = df_predicted["CCPI"].mean()
@@ -117,6 +192,7 @@ class Presentation:
       border=True,
       help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only {purchasing_power * 100}% of its value during the base period (1982-1984). It is expected to represent a {purchasing_power_percent_change}% decrease compared to 2023."
     )
+  
 
   def notes(self):
     st.info("Notes")
