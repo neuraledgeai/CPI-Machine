@@ -97,6 +97,11 @@ class Presentation:
     )
 
   def coreInflation(self):
+
+    df = self.model.predict(result="dataframe")
+    # Filter for predicted values (2024–2033)
+    df_predicted = df[df["Label"] == "Predicted"]
+    
     # Calculate the mean CPI and CCPI for the predicted values
     mean_cpi = df_predicted["CPI"].mean()
     mean_ccpi = df_predicted["CCPI"].mean()
