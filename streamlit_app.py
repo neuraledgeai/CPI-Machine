@@ -10,5 +10,12 @@ st.set_page_config(
 present = Presentation()
 
 st.title("Inflation Expectations as Measured by the Consumer Price Index (CPI) in the USA")
-present.cpi()
-present.notes()
+
+options = ["Inflation", "Core Inflation"]
+selection = st.segmented_control(
+    "Type", options, default="Inflation"
+)
+if selection == "Inflation":
+    present.inflation()
+else:
+    present.coreInflation()
