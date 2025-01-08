@@ -97,6 +97,14 @@ class Presentation:
     )
 
   def coreInflation(self):
+    
+    option = st.selectbox(
+      "Units/Index:",
+      (
+        "Core Inflation",
+        "Percent Change",
+      ),
+    )
 
     df = self.model.predict(result="dataframe")
     # Filter for predicted values (2024–2033)
@@ -125,28 +133,15 @@ class Presentation:
     pp_cpi_change = ((pp_cpi_2033 - pp_cpi_2023) / pp_cpi_2023) * 100
     pp_ccpi_change = ((pp_ccpi_2033 - pp_ccpi_2023) / pp_ccpi_2023) * 100
     
-    if option == "Inflation":
-      result = "fig_cpi"
-      cpi = mean_cpi.round(3)
-      cpi_percent_change = percent_change_cpi.round(3)
-      purchasing_power = pp_cpi_2033.round(3)
-      purchasing_power_percent_change = pp_cpi_change.round(3)
-      heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (1961-2033)"
-    elif option == "Inflation (percent change)":
-      result = "fig_cpi_pct_chg"
-      cpi = mean_cpi.round(3)
-      cpi_percent_change = percent_change_cpi.round(3)
-      purchasing_power = pp_cpi_2033.round(3)
-      heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Percent Change From Year Ago (1961-2033)"
-      purchasing_power_percent_change = pp_cpi_change.round(3)
-    elif option == "Core Inflation":
+    
+    if option == "Core Inflation":
       result = "fig_ccpi"
       cpi = mean_ccpi.round(3)
       cpi_percent_change = percent_change_ccpi.round(3)
       purchasing_power = pp_ccpi_2033.round(3)
       purchasing_power_percent_change = pp_ccpi_change.round(3)
       heading_text = "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average (1961-2033)"
-    elif option == "Core Inflation (percent change)":
+    elif option == "Percent Change":
       result = "fig_ccpi_pct_chg"
       cpi = mean_ccpi.round(3)
       cpi_percent_change = percent_change_ccpi.round(3)
