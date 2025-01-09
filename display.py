@@ -8,11 +8,12 @@ class Presentation:
     self.model = Model()
 
   def inflation(self):
+    
     option = st.selectbox(
       "Units/Index:",
       (
-        "Inflation",
-        "Percent Change",
+        "Consumer Price Index",
+        "Percent Change"
       ),
     )
     
@@ -20,10 +21,10 @@ class Presentation:
     # Filter for predicted values (2024–2033)
     df_predicted = df[df["Label"] == "Predicted"]
 
-    # Calculate the mean CPI
+    # Calculate the mean predicted CPI
     mean_cpi = df_predicted["CPI"].mean()
     
-    # Get the actual CPI
+    # Get the actual CPI on 2023
     actual_cpi_2023 = df.loc["2023-01-01", "CPI"]
 
     # Calculate percent change from 2023 actual to predicted mean
@@ -33,11 +34,10 @@ class Presentation:
     pp_cpi_2023 = 100 / df.loc["2023-01-01", "CPI"]
     pp_cpi_2033 = 100 / df.loc["2033-01-01", "CPI"]
     
-
     # Calculate Percent Change in Purchasing Power
     pp_cpi_change = ((pp_cpi_2033 - pp_cpi_2023) / pp_cpi_2023) * 100
 
-    if option == "Inflation":
+    if option == "Consumer Price Index":
       result = "fig_cpi"
       cpi = mean_cpi.round(3)
       cpi_percent_change = percent_change_cpi.round(3)
