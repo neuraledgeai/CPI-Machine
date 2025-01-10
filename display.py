@@ -86,7 +86,7 @@ class Presentation:
       mean_pp.round(2),
       f"{percent_change_pp.round(2)}%",
       border=True,
-      help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only X% of its value during the base period (1982-1984). It is expected to represent a {purchasing_power_percent_change}% decrease compared to 2023."
+      help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only X% of its value during the base period (1982-1984). It is expected to represent a X% decrease compared to 2023."
     )
 
   def coreInflation(self):
