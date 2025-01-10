@@ -85,6 +85,10 @@ class Model:
     df["CPI_PC"] = df["CPI"].pct_change() * 100
     df["CCPI_PC"] = df["CCPI"].pct_change() * 100
     
+    # Add the PP (Purchasing Power) and the CPP (Core Purchasing Power) columns
+    df["PP"] = 100 / df["CPI"]
+    df["CPP"] = 100 / df["CCPI"]
+    
     # Drop rows with NaN values resulting from percent change calculation
     df = df.dropna()
 
