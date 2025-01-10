@@ -18,35 +18,31 @@ class Presentation:
     )
     
     df = self.model.predict(result="dataframe")
+
     # Filter for predicted values (2024–2033)
     df_predicted = df[df["Label"] == "Predicted"]
 
-    # Calculate the mean predicted CPI
+    # Calculate the mean CPI and PP for the predicted values
     mean_cpi = df_predicted["CPI"].mean()
+    mean_pp = df_predicted["PP"].mean()
     
-    # Get the actual CPI on 2023
+    # Get the actual CPI and PP values for 2023
     actual_cpi_2023 = df.loc["2023-01-01", "CPI"]
-
-    # Calculate percent change from 2023 actual to predicted mean
-    percent_change_cpi = ((mean_cpi - actual_cpi_2023) / actual_cpi_2023) * 100
-
-    # Calculate Purchasing Power for 2023 and 2033
-    pp_cpi_2023 = 100 / df.loc["2023-01-01", "CPI"]
-    pp_cpi_2033 = 100 / df.loc["2033-01-01", "CPI"]
+    actual_pp_2023 = df.loc["2023-01-01", "PP"]
     
-    # Calculate Percent Change in Purchasing Power
-    pp_cpi_change = ((pp_cpi_2033 - pp_cpi_2023) / pp_cpi_2023) * 100
+    
+    # Calculate percent change in CPI from 2023 actual to predicted mean
+    percent_change_cpi = ((mean_cpi - actual_cpi_2023) / actual_cpi_2023) * 100
+    
+    # Calculate percent change in PP from 2023 actual to predicted mean
+    percent_change_pp = ((mean_pp - actual_pp_2023) / actual_pp_2023) * 100
 
     if option == "Consumer Price Index":
       result = "fig_cpi"
-      purchasing_power = pp_cpi_2033.round(3)
-      purchasing_power_percent_change = pp_cpi_change.round(3)
       heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (1961-2033)"
     elif option == "Percent Change":
       result = "fig_cpi_pct_chg"
-      purchasing_power = pp_cpi_2033.round(3)
       heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average, Percent Change From Year Ago (1961-2033)"
-      purchasing_power_percent_change = pp_cpi_change.round(3)
       
     heading = f"""
     <div style="text-align: center; font-size: 18px;">
@@ -74,6 +70,7 @@ class Presentation:
         'modeBarButtonsToRemove': ['zoom2d', 'pan2d', 'select2d', 'lasso2d', 
                                    'zoomIn2d', 'zoomOut2d', 'autoScale2d', 'resetScale2d']
     }
+    
     st.plotly_chart(fig, config=config)
     
     col1, col2 = st.columns(2)
@@ -85,9 +82,9 @@ class Presentation:
       border=True
     )
     col2.metric(
-      "Purchasing Power (2033)",
-      f"{purchasing_power * 100}%",
-      f"{purchasing_power_percent_change}%",
+      "10 Year Avg. Purchasing Power (2023-33)",
+      mean_pp.round(2),
+      f"{percent_change_pp.round(2)}%",
       border=True,
       help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only {purchasing_power * 100}% of its value during the base period (1982-1984). It is expected to represent a {purchasing_power_percent_change}% decrease compared to 2023."
     )
