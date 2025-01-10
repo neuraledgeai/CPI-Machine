@@ -76,9 +76,9 @@ class Presentation:
     col1, col2 = st.columns(2)
     col1.metric(
       "10 Year Avg. CPI (2023-33)",
-      mean_cpi.round(3),
-      f"{percent_change_cpi.round(3)}%",
-      help =f"The average Consumer Price Index (CPI) over the 10 years from 2024 to 2033 is expected to represent a {percent_change_cpi.round(3)}% increase compared to the CPI value in 2023.",
+      mean_cpi.round(2),
+      f"{percent_change_cpi.round(2)}%",
+      help =f"The average Consumer Price Index (CPI) over the 10 years from 2024 to 2033 is expected to represent a {percent_change_cpi.round(2)}% increase compared to the CPI value in 2023.",
       border=True
     )
     col2.metric(
@@ -86,7 +86,7 @@ class Presentation:
       mean_pp.round(2),
       f"{percent_change_pp.round(2)}%",
       border=True,
-      help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only {purchasing_power * 100}% of its value during the base period (1982-1984). It is expected to represent a {purchasing_power_percent_change}% decrease compared to 2023."
+      help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only X% of its value during the base period (1982-1984). It is expected to represent a {purchasing_power_percent_change}% decrease compared to 2023."
     )
 
   def coreInflation(self):
