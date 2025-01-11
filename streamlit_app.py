@@ -19,3 +19,5 @@ if selection == "Inflation":
     present.inflation()
 else:
     present.coreInflation()
+
+present.notes()
