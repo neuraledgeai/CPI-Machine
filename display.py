@@ -174,6 +174,12 @@ class Presentation:
       border=True,
       help =f"On average, the purchasing power of $1.00 over the next 10 years is expected to be only {mean_cpp.round(2) * 100}% of its value during the base period (1982-1984). This represents a {percent_change_cpp.round(2)}% decrease compared to its purchasing power in 2023."
     )
+    
+    # Display the key highlights.
+    with st.expander("Key Highlights", expanded = True):
+      st.markdown(f''':blue-background[Highlight-1] : On average, the general price level in the USA is expected to increase by {percent_change_ccpi.round(2)}% over the next 10 years, indicating a significant rise in inflation.''')
+      st.markdown(f''':blue-background[Highlight-2] : On average, the purchasing power of $1.00 over the next 10 years is expected to be only {mean_cpp.round(2) * 100}% of its value during the base period (1982-1984). This represents a {percent_change_cpp.round(2)}% decrease compared to its purchasing power in 2023.''')
+
   
 
   def notes(self):
