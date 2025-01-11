@@ -94,52 +94,36 @@ class Presentation:
     option = st.selectbox(
       "Units/Index:",
       (
-        "Core Inflation",
+        "Consumer Price Index",
         "Percent Change",
       ),
     )
 
     df = self.model.predict(result="dataframe")
+    
     # Filter for predicted values (2024–2033)
     df_predicted = df[df["Label"] == "Predicted"]
     
-    # Calculate the mean CPI and CCPI for the predicted values
-    mean_cpi = df_predicted["CPI"].mean()
+    # Calculate the mean CCPI and CPP for the predicted values
     mean_ccpi = df_predicted["CCPI"].mean()
+    mean_cpp = df_predicted["CPP"].mean()
     
-    # Get the actual CPI and CCPI values for 2023
-    actual_cpi_2023 = df.loc["2023-01-01", "CPI"]
+    # Get the actual CCPI and CPP values for 2023
     actual_ccpi_2023 = df.loc["2023-01-01", "CCPI"]
+    actual_cpp_2023 = df.loc["2023-01-01", "CPP"]
     
-    # Calculate percent change from 2023 actual to predicted mean
-    percent_change_cpi = ((mean_cpi - actual_cpi_2023) / actual_cpi_2023) * 100
+    # Calculate percent change in CCPI from 2023 actual to predicted mean
     percent_change_ccpi = ((mean_ccpi - actual_ccpi_2023) / actual_ccpi_2023) * 100
-
-    # Calculate Purchasing Power for 2023 and 2033
-    pp_cpi_2023 = 100 / df.loc["2023-01-01", "CPI"]
-    pp_cpi_2033 = 100 / df.loc["2033-01-01", "CPI"]
     
-    pp_ccpi_2023 = 100 / df.loc["2023-01-01", "CCPI"]
-    pp_ccpi_2033 = 100 / df.loc["2033-01-01", "CCPI"]
-
-    # Calculate Percent Change in Purchasing Power
-    pp_cpi_change = ((pp_cpi_2033 - pp_cpi_2023) / pp_cpi_2023) * 100
-    pp_ccpi_change = ((pp_ccpi_2033 - pp_ccpi_2023) / pp_ccpi_2023) * 100
+    # Calculate percent change in CPP from 2023 actual to predicted mean
+    percent_change_cpp = ((mean_cpp - actual_cpp_2023) / actual_cpp_2023) * 100
     
     
-    if option == "Core Inflation":
+    if option == "Consumer Price Index":
       result = "fig_ccpi"
-      cpi = mean_ccpi.round(3)
-      cpi_percent_change = percent_change_ccpi.round(3)
-      purchasing_power = pp_ccpi_2033.round(3)
-      purchasing_power_percent_change = pp_ccpi_change.round(3)
       heading_text = "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average (1961-2033)"
     elif option == "Percent Change":
       result = "fig_ccpi_pct_chg"
-      cpi = mean_ccpi.round(3)
-      cpi_percent_change = percent_change_ccpi.round(3)
-      purchasing_power = pp_ccpi_2033.round(3)
-      purchasing_power_percent_change = pp_ccpi_change.round(3)
       heading_text = "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average, Percent Change From Year Ago (1961-2033)"
   
     heading = f"""
@@ -172,18 +156,18 @@ class Presentation:
     
     col1, col2 = st.columns(2)
     col1.metric(
-      "10 Year Avg. CPI (2024-33)",
-      cpi,
-      f"{cpi_percent_change}%",
-      help =f"The average Consumer Price Index (CPI) over the 10 years from 2024 to 2033 is expected to represent a {cpi_percent_change}% increase compared to the CPI value in 2023.",
+      "10 Year Avg. CPI Less Food and Energy (2024-33)",
+      mean_ccpi.round(2),
+      f"{percent_change_ccpi.round(2)}%",
+      help =f"On average, the core price level in the USA is expected to increase by {percent_change_ccpi.round(2)}% over the next 10 years, indicating a significant rise in core inflation.",
       border=True
     )
     col2.metric(
-      "Purchasing Power (2033)",
-      f"{purchasing_power * 100}%",
-      f"{purchasing_power_percent_change}%",
+      "10 Year Avg. Purchasing Power (2024-33)",
+      f"{mean_cpp * 100}%",
+      f"{percent_change_cpp.round(2)}%",
       border=True,
-      help =f"On average, the purchasing power of $1.00 in 2033 is expected to be only {purchasing_power * 100}% of its value during the base period (1982-1984). It is expected to represent a {purchasing_power_percent_change}% decrease compared to 2023."
+      help =f"On average, the purchasing power of $1.00 over the next 10 years is expected to be only {mean_cpp.round(2) * 100}% of its value during the base period (1982-1984). This represents a {percent_change_cpp.round(2)}% decrease compared to its purchasing power in 2023."
     )
   
 
