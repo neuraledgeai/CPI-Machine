@@ -164,7 +164,7 @@ class Presentation:
     )
     col2.metric(
       "10 Year Avg. Purchasing Power (2024-33)",
-      f"{mean_cpp * 100}%",
+      f"{mean_cpp.round(2) * 100}%",
       f"{percent_change_cpp.round(2)}%",
       border=True,
       help =f"On average, the purchasing power of $1.00 over the next 10 years is expected to be only {mean_cpp.round(2) * 100}% of its value during the base period (1982-1984). This represents a {percent_change_cpp.round(2)}% decrease compared to its purchasing power in 2023."
