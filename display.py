@@ -12,7 +12,7 @@ class Presentation:
     option = st.selectbox(
       "Units/Index:",
       (
-        "Consumer Price Index",
+        "Consumer Price Index: All Items",
         "Percent Change"
       ),
     )
@@ -37,7 +37,7 @@ class Presentation:
     # Calculate percent change in PP from 2023 actual to predicted mean
     percent_change_pp = ((mean_pp - actual_pp_2023) / actual_pp_2023) * 100
 
-    if option == "Consumer Price Index":
+    if option == "Consumer Price Index: All Items":
       result = "fig_cpi"
       heading_text = "Consumer Price Index for All Urban Consumers: All Items in U.S. City Average (1961-2033)"
     elif option == "Percent Change":
@@ -75,7 +75,7 @@ class Presentation:
     
     col1, col2 = st.columns(2)
     col1.metric(
-      "10 Year Avg. CPI (2024-33)",
+      "10 Year Avg. CPI: All Items (2024-33)",
       mean_cpi.round(2),
       f"{percent_change_cpi.round(2)}%",
       help =f"On average, the general price level in the USA is expected to increase by {percent_change_cpi.round(2)}% over the next 10 years, indicating a significant rise in inflation.",
@@ -94,7 +94,7 @@ class Presentation:
     option = st.selectbox(
       "Units/Index:",
       (
-        "Consumer Price Index",
+        "Consumer Price Index: All Items Less Food and Energy",
         "Percent Change",
       ),
     )
@@ -119,7 +119,7 @@ class Presentation:
     percent_change_cpp = ((mean_cpp - actual_cpp_2023) / actual_cpp_2023) * 100
     
     
-    if option == "Consumer Price Index":
+    if option == "Consumer Price Index: All Items Less Food and Energy":
       result = "fig_ccpi"
       heading_text = "Consumer Price Index for All Urban Consumers: All Items Less Food and Energy in U.S. City Average (1961-2033)"
     elif option == "Percent Change":
@@ -156,7 +156,7 @@ class Presentation:
     
     col1, col2 = st.columns(2)
     col1.metric(
-      "10 Year Avg. CPI Less Food and Energy (2024-33)",
+      "10 Year Avg. CPI: All Items Less Food and Energy (2024-33)",
       mean_ccpi.round(2),
       f"{percent_change_ccpi.round(2)}%",
       help =f"On average, the core price level in the USA is expected to increase by {percent_change_ccpi.round(2)}% over the next 10 years, indicating a significant rise in core inflation.",
