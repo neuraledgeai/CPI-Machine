@@ -13,7 +13,7 @@ st.title("Inflation Expectations as Measured by the Consumer Price Index (CPI) i
 
 options = ["Inflation", "Core Inflation"]
 selection = st.segmented_control(
-    "Type", options, default="Inflation"
+    " ", options, default="Inflation"
 )
 if selection == "Inflation":
     present.inflation()
