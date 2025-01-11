@@ -9,7 +9,7 @@ st.set_page_config(
 
 present = Presentation()
 
-st.title("Inflation Expectations as Measured by the Consumer Price Index (CPI) in the USA")
+st.title("Inflation Expectations in the USA as Measured by the Consumer Price Index (CPI)")
 
 options = ["Inflation", "Core Inflation"]
 selection = st.segmented_control(
