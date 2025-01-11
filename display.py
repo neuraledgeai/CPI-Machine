@@ -10,11 +10,11 @@ class Presentation:
   def inflation(self):
     
     option = st.selectbox(
-      "Units/Index:",
+      "Units:",
       (
         "Consumer Price Index: All Items",
         "Percent Change"
-      ),
+      )
     )
     
     df = self.model.predict(result="dataframe")
@@ -92,11 +92,11 @@ class Presentation:
   def coreInflation(self):
     
     option = st.selectbox(
-      "Units/Index:",
+      "Units:",
       (
         "Consumer Price Index: All Items Less Food and Energy",
-        "Percent Change",
-      ),
+        "Percent Change"
+      )
     )
 
     df = self.model.predict(result="dataframe")
