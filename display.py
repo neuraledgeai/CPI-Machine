@@ -92,7 +92,7 @@ class Presentation:
     # Display the key highlights.
     with st.expander("Key Highlights", expanded = True):
       st.markdown(f''':blue-background[Highlight-1] : On average, the **general price level** in the USA is expected to **increase by {percent_change_cpi.round(2)}% over the next 10 years**, indicating a significant rise in inflation.''')
-      st.markdown(f''':blue-background[Highlight-2] : Over the same period, the **purchasing power of $1.00** is expected to average **{mean_pp.round(2) * 100}% of its value** during the base period (1982-1984), **marking a {percent_change_pp.round(2)}% decrease** compared to its purchasing power in 2023.''')
+      st.markdown(f''':blue-background[Highlight-2] : Over the same period, the **purchasing power of $1.00** is expected to average **{mean_pp.round(2) * 100}% of its value** during the base period (1982-1984), marking a **{percent_change_pp.round(2)}% decrease** compared to its purchasing power in 2023.''')
 
   def coreInflation(self):
     
