@@ -13,7 +13,7 @@ st.title("Inflation Expectations in the USA as Measured by the Consumer Price In
 
 options = ["Headline Inflation", "Core Inflation"]
 selection = st.segmented_control(
-    " ", options, default="Inflation"
+    " ", options, default="Headline Inflation"
 )
 if selection == "Headline Inflation":
     present.inflation()
