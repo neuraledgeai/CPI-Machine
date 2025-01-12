@@ -78,7 +78,7 @@ class Presentation:
       "10 Year Avg. CPI: All Items (2024-33)",
       mean_cpi.round(2),
       f"{percent_change_cpi.round(2)}%",
-      help =f"On average, the general price level in the USA is expected to increase by {percent_change_cpi.round(2)}% over the next 10 years, indicating a significant rise in inflation.",
+      help =f"On average, the general price level in the USA is expected to increase by {percent_change_cpi.round(2)}% over the next 10 years, indicating a significant rise in headline inflation.",
       border=True
     )
     col2.metric(
@@ -91,7 +91,7 @@ class Presentation:
     
     # Display the key highlights.
     with st.expander("Key Highlights", expanded = True):
-      st.markdown(f''':blue-background[Highlight-1] : On average, the **general price level** in the USA is expected to **increase by {percent_change_cpi.round(2)}% over the next 10 years** (2024-2033), indicating a significant rise in inflation.''')
+      st.markdown(f''':blue-background[Highlight-1] : On average, the **general price level** in the USA is expected to **increase by {percent_change_cpi.round(2)}% over the next 10 years** (2024-2033), indicating a significant rise in headline inflation.''')
       st.markdown(f''':blue-background[Highlight-2] : Over the same period, the **purchasing power of $1.00** is expected to average **{mean_pp.round(2) * 100}% of its value** during the base period (1982-1984), marking a **{percent_change_pp.round(2)}% decrease** compared to its purchasing power in 2023.''')
 
   def coreInflation(self):
@@ -177,7 +177,7 @@ class Presentation:
     
     # Display the key highlights.
     with st.expander("Key Highlights", expanded = True):
-      st.markdown(f''':blue-background[Highlight-1] : On average, the **core price level** in the USA is expected to **increase by {percent_change_ccpi.round(2)}% over the next 10 years** (2024-2033), indicating a significant rise in inflation.''')
+      st.markdown(f''':blue-background[Highlight-1] : On average, the **core price level** in the USA is expected to **increase by {percent_change_ccpi.round(2)}% over the next 10 years** (2024-2033), indicating a significant rise in core inflation.''')
       st.markdown(f''':blue-background[Highlight-2] : Over the same period, the **purchasing power of $1.00** is expected to average **{mean_cpp.round(2) * 100}% of its value** during the base period (1982-1984), marking a **{percent_change_cpp.round(2)}% decrease** compared to its purchasing power in 2023.''')
 
   
