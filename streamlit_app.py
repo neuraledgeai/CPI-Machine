@@ -11,11 +11,11 @@ present = Presentation()
 
 st.title("Inflation Expectations in the USA as Measured by the Consumer Price Index (CPI)")
 
-options = ["Inflation", "Core Inflation"]
+options = ["Headline Inflation", "Core Inflation"]
 selection = st.segmented_control(
     " ", options, default="Inflation"
 )
-if selection == "Inflation":
+if selection == "Headline Inflation":
     present.inflation()
 else:
     present.coreInflation()
